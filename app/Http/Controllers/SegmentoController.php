@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ActualizarSegmentoRequest;
 use App\Http\Requests\GuardarSegmentoRequest;
 use App\Models\Segmento;
 use Illuminate\Http\Request;
@@ -58,17 +59,13 @@ class SegmentoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request)
+    public function update(ActualizarSegmentoRequest $request, Segmento $segmento)
     {
-        $task = Segmento::findOrFail($request->id);
-
-        $task->nombre=$request->nombre;
-
-        $task->save();
-
-        return $task;
-        //Esta función actualizará la tarea que hayamos seleccionado
-       
+        $segmento->update($request->all());
+        return response()->json([
+            'res'=>true,
+            'mensaje'=>"Actualizado correctamente"
+        ], 200);
     }
 
     /**
@@ -78,10 +75,12 @@ class SegmentoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy(Request $request)
+    public function destroy(Segmento $segmento)
     {
-        $task = Segmento::destroy($request->id);
-        return $task;
-        //Esta función obtendra el id de la tarea que hayamos seleccionado y la borrará de nuestra BD
+        $segmento->delete();
+        return response()->json([
+            'res'=>true,
+            'mensaje'=>"Eliminado correctamente"
+        ], 200);
     }
 }

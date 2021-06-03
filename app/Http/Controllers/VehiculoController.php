@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ActualizarVehiculosRequest;
 use App\Http\Requests\GuardarVehiculoRequest;
 use App\Models\Vehiculo;
 use Illuminate\Http\Request;
@@ -58,22 +59,13 @@ class VehiculoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request)
+    public function update(ActualizarVehiculosRequest $request, Vehiculo $vehiculo)
     {
-        $task = Vehiculo::findOrFail($request->id);
-
-        $task->tipo = $request->tipo;
-        $task->marca=$request->marca;
-        $task->modelo=$request->modelo;
-        $task->serie=$request->serie;
-        $task->economico=$request->economico;
-        $task->placa=$request->placa;
-
-        $task->save();
-
-        return $task;
-        //Esta función actualizará la tarea que hayamos seleccionado
-       
+        $vehiculo->update($request->all());
+        return response()->json([
+            'res'=>true,
+            'mensaje'=>"Actualizado correctamente"
+        ], 200);
     }
 
     /**
@@ -83,10 +75,12 @@ class VehiculoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy(Request $request)
+    public function destroy(Vehiculo $vehiculo)
     {
-        $task = Vehiculo::destroy($request->id);
-        return $task;
-        //Esta función obtendra el id de la tarea que hayamos seleccionado y la borrará de nuestra BD
+        $vehiculo->delete();
+        return response()->json([
+            'res'=>true,
+            'mensaje'=>"Eliminado correctamente"
+        ], 200);
     }
 }

@@ -72,10 +72,12 @@ class SucursalController extends Controller
      * @param  \App\Models\Sucursal  $segmento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Sucursal $sucursal)
     {
-        $task = Sucursal::destroy($request->id);
-        return $task;
-        //Esta función obtendra el id de la tarea que hayamos seleccionado y la borrará de nuestra BD
+        $sucursal->delete();
+        return response()->json([
+            'res'=>true,
+            'mensaje'=>"Eliminado correctamente"
+        ], 200);
     }
 }

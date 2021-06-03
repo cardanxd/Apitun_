@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ActualizarOrdenRequest;
 use App\Http\Requests\GuardarOrdenRequest;
 use App\Models\Orden;
 use Illuminate\Http\Request;
@@ -58,43 +59,13 @@ class OrdenController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request)
+    public function update(ActualizarOrdenRequest $request, Orden $orden)
     {
-        $task = Orden::findOrFail($request->id);
-
-        $task->fecha = $request->fecha;
-        $task->cilindros=$request->cilindros;
-        $task->condicionventa = $request->condicionventa;
-        $task->urgenciainicial = $request->urgenciainicial;
-        $task->atencion = $request->atencion;
-        $task->comentarios = $request->comentarios;
-        $task->centrocosto = $request->centrocosto;
-        $task->placa = $request->placa;
-        $task->ceniceros = $request->ceniceros;
-        $task->cristales_rotos = $request->cristales_rotos;
-        $task->quemacocos = $request->quemacocos;
-        $task->espejo_izq = $request->espejo_izq;
-        $task->espejo_der = $request->espejo_der;
-        $task->tapon = $request->tapon;
-        $task->antena = $request->antena;
-        $task->tapetes = $request->tapetes;
-        $task->varilla = $request->varilla;
-        $task->radio = $request->radio;
-        $task->espejo_int = $request->esppejo_int;
-        $task->gato = $request->gato;
-        $task->extinguidor = $request->extinguidor;
-        $task->emblemas = $request->emblemas;
-        $task->encendedor = $request->encendedor;
-        $task->llanta = $request->llanta;
-        $task->km = $request->km;
-        $task->combustible = $request->combustible;
-        $task->transmision = $request->transmision;
-        $task->vestiduras = $request->vestiduras;
-        $task->save();
-
-        return $task;
-        //Esta función actualizará la tarea que hayamos seleccionado
-       
+        $orden->update($request->all());
+        return response()->json([
+            'res'=>true,
+            'mensaje'=>"Actualizado correctamente"
+        ], 200);
     }
 
     /**
@@ -103,10 +74,12 @@ class OrdenController extends Controller
      * @param  \App\Models\Orden  $orden
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Orden $orden)
     {
-        $task = Orden::destroy($request->id);
-        return $task;
-        //Esta función obtendra el id de la tarea que hayamos seleccionado y la borrará de nuestra BD
+        $orden->delete();
+        return response()->json([
+            'res'=>true,
+            'mensaje'=>"Eliminado correctamente"
+        ], 200);
     }
 }
