@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ActualizarGiroRequest;
 use App\Http\Requests\GuardarGiroRequest;
+use App\Http\Resources\GiroResource;
 use App\Models\Giro;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,9 @@ class GiroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $task = Giro::all();
-        return $task;
-        //Esta función nos devolvera todas las tareas que tenemos en nuestra BD
+        return GiroResource::collection(Giro::all());
     }
 
     /**
@@ -30,11 +29,7 @@ class GiroController extends Controller
 
     public function store(GuardarGiroRequest $request)
     {
-        Giro::create($request->all());
-        return response()->json([
-            'res'=>true,
-            'msg'=>"Guardado correctamente"
-        ]);
+        return new GiroResource(Giro::create($request->all()));
     }
 
     /**
@@ -45,10 +40,7 @@ class GiroController extends Controller
      */
     public function show(Giro $giro)
     {
-        return response()->json([
-            'res'=>true,
-            'giro'=>$giro
-        ]);
+        return new GiroResource($giro);
     }
 
     /**
@@ -62,10 +54,7 @@ class GiroController extends Controller
     public function update(ActualizarGiroRequest $request, Giro $giro)
     {
         $giro->update($request->all());
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Actualizado correctamente"
-        ], 200);
+        return new GiroResource($giro);
     }
 
     /**
@@ -77,9 +66,6 @@ class GiroController extends Controller
     public function destroy(Giro $giro)
     {
         $giro->delete();
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Eliminado correctamente"
-        ], 200);
+        return new GiroResource($giro);
     }
 }

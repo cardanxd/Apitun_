@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ActualizarVehiculosRequest;
 use App\Http\Requests\GuardarVehiculoRequest;
+use App\Http\Resources\VehiculoResource;
 use App\Models\Vehiculo;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,9 @@ class VehiculoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $task = Vehiculo::all();
-        return $task;
-        //Esta función nos devolvera todas las tareas que tenemos en nuestra BD
+        return VehiculoResource::collection(Vehiculo::all());
     }
 
     /**
@@ -29,11 +28,7 @@ class VehiculoController extends Controller
      */
     public function store(GuardarVehiculoRequest $request)
     {
-        Vehiculo::create($request->all());
-        return response()->json([
-            'res'=>true,
-            'msg'=>"Guardado correctamente"
-        ]);
+        return new VehiculoResource(Vehiculo::create($request->all()));
     }
 
     /**
@@ -45,10 +40,7 @@ class VehiculoController extends Controller
 
     public function show(Vehiculo $vehiculo)
     {
-        return response()->json([
-            'res'=>true,
-            'vehiculo'=>$vehiculo
-        ]);
+        return new VehiculoResource($vehiculo);
     }
 
     /**
@@ -62,10 +54,7 @@ class VehiculoController extends Controller
     public function update(ActualizarVehiculosRequest $request, Vehiculo $vehiculo)
     {
         $vehiculo->update($request->all());
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Actualizado correctamente"
-        ], 200);
+        return new VehiculoResource($vehiculo);
     }
 
     /**
@@ -78,9 +67,6 @@ class VehiculoController extends Controller
     public function destroy(Vehiculo $vehiculo)
     {
         $vehiculo->delete();
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Eliminado correctamente"
-        ], 200);
+        return new VehiculoResource($vehiculo);
     }
 }

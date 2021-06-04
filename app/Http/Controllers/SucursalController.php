@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ActualizarSucursalRequest;
 use App\Http\Requests\GuardarSucursalRequest;
+use App\Http\Resources\SucursalResource;
 use App\Models\Sucursal;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,9 @@ class SucursalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $task = Sucursal::all();
-        return $task;
-        //Esta función nos devolvera todas las tareas que tenemos en nuestra BD
+        return SucursalResource::collection(Sucursal::all());
     }
 
     /**
@@ -29,11 +28,7 @@ class SucursalController extends Controller
      */
     public function store(GuardarSucursalRequest $request)
     {
-        Sucursal::create($request->all());
-        return response()->json([
-            'res'=>true,
-            'msg'=>"Guardado correctamente"
-        ], 200);
+        return new SucursalResource(Sucursal::create($request->all()));
     }
 
     /**
@@ -44,10 +39,7 @@ class SucursalController extends Controller
      */
     public function show(Sucursal $sucursal)
     {
-        return response()->json([
-            'res'=>true,
-            "sucursal"=>$sucursal
-        ], 200);
+        return new SucursalResource($sucursal);
     }
 
     /**
@@ -60,10 +52,7 @@ class SucursalController extends Controller
     public function update(ActualizarSucursalRequest $request, Sucursal $sucursal)
     {
         $sucursal->update($request->all());
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Actualizado correctamente"
-        ], 200);
+        return new SucursalResource($sucursal);
     }
 
     /**
@@ -75,9 +64,6 @@ class SucursalController extends Controller
     public function destroy(Sucursal $sucursal)
     {
         $sucursal->delete();
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Eliminado correctamente"
-        ], 200);
+        return new SucursalResource($sucursal);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ActualizarOrdenRequest;
 use App\Http\Requests\GuardarOrdenRequest;
+use App\Http\Resources\OrdenResource;
 use App\Models\Orden;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,9 @@ class OrdenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $task = Orden::all();
-        return $task;
-        //Esta función nos devolvera todas las tareas que tenemos en nuestra BD
+        return OrdenResource::collection(Orden::all());
     }
 
     /**
@@ -30,11 +29,7 @@ class OrdenController extends Controller
 
     public function store(GuardarOrdenRequest $request)
     {
-        Orden::create($request->all());
-        return response()->json([
-            'res'=>true,
-            'msg'=>"Guardado correctamente"
-        ]);
+        return new OrdenResource(Orden::create($request->all()));
     }
 
     /**
@@ -45,10 +40,7 @@ class OrdenController extends Controller
      */
     public function show(Orden $orden)
     {
-        return response()->json([
-            'res'=>true,
-            'orden'=>$orden
-        ]);
+        return new OrdenResource($orden);
     }
 
     /**
@@ -62,10 +54,7 @@ class OrdenController extends Controller
     public function update(ActualizarOrdenRequest $request, Orden $orden)
     {
         $orden->update($request->all());
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Actualizado correctamente"
-        ], 200);
+        return new OrdenResource($orden);
     }
 
     /**
@@ -77,9 +66,6 @@ class OrdenController extends Controller
     public function destroy(Orden $orden)
     {
         $orden->delete();
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Eliminado correctamente"
-        ], 200);
+        return new OrdenResource($orden);
     }
 }

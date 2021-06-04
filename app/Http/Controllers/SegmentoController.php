@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ActualizarSegmentoRequest;
 use App\Http\Requests\GuardarSegmentoRequest;
+use App\Http\Resources\SegmentoResource;
 use App\Models\Segmento;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,9 @@ class SegmentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $task = Segmento::all();
-        return $task;
-        //Esta función nos devolvera todas las tareas que tenemos en nuestra BD
+        return SegmentoResource::collection(Segmento::all());
     }
 
     /**
@@ -29,11 +28,7 @@ class SegmentoController extends Controller
      */
     public function store(GuardarSegmentoRequest $request)
     {
-        Segmento::create($request->all());
-        return response()->json([
-            'res'=>true,
-            'msg'=>"Guardado correctamente"
-        ]);
+        return new SegmentoResource(Segmento::create($request->all()));
     }
 
     /**
@@ -45,10 +40,7 @@ class SegmentoController extends Controller
 
     public function show(Segmento $segmento)
     {
-        return response()->json([
-            'res'=>true,
-            'segmento'=>$segmento
-        ]);
+        return new SegmentoResource($segmento);
     }
 
     /**
@@ -62,10 +54,7 @@ class SegmentoController extends Controller
     public function update(ActualizarSegmentoRequest $request, Segmento $segmento)
     {
         $segmento->update($request->all());
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Actualizado correctamente"
-        ], 200);
+        return new SegmentoResource($segmento);
     }
 
     /**
@@ -78,9 +67,6 @@ class SegmentoController extends Controller
     public function destroy(Segmento $segmento)
     {
         $segmento->delete();
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Eliminado correctamente"
-        ], 200);
+        return new SegmentoResource($segmento);
     }
 }

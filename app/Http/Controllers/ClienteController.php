@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ActualizarClienteRequest;
 use App\Http\Requests\GuardarClienteRequest;
+use App\Http\Resources\ClienteResource;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $task = Cliente::all();
-        return $task;
+        return ClienteResource::collection(Cliente::all());
     }
 
     /**
@@ -29,11 +29,7 @@ class ClienteController extends Controller
 
     public function store(GuardarClienteRequest $request)
     {
-        Cliente::create($request->all());
-        return response()->json([
-            'res'=>true,
-            'msg'=>"Guardado correctamente"
-        ]);
+        return new ClienteResource(Cliente::create($request->all()));
     }
 
     /**
@@ -45,10 +41,7 @@ class ClienteController extends Controller
 
     public function show(Cliente $cliente)
     {
-        return response()->json([
-            'res'=>true,
-            'cliente'=>$cliente
-        ]);
+        return new ClienteResource($cliente);
     }
 
     /**
@@ -61,10 +54,7 @@ class ClienteController extends Controller
     public function update(ActualizarClienteRequest $request, Cliente $cliente)
     {
         $cliente->update($request->all());
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Actualizado correctamente"
-        ], 200);
+        return new ClienteResource($cliente);
     }
 
 
@@ -77,9 +67,6 @@ class ClienteController extends Controller
     public function destroy(Cliente $cliente)
     {
         $cliente->delete();
-        return response()->json([
-            'res'=>true,
-            'mensaje'=>"Eliminado correctamente"
-        ], 200);
+        return new ClienteResource($cliente);
     }
 }
