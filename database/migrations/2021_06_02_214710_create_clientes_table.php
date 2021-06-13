@@ -14,8 +14,6 @@ class CreateClientesTable extends Migration
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
             $table->string('nombre');
             $table->string('razon')->nullable();
@@ -38,7 +36,7 @@ class CreateClientesTable extends Migration
             $table->integer('diascredito')->nullable();
             $table->integer('diasbloqueo')->nullable();
             $table->string('descuento')->nullable();
-            $table->date('birthday')->nullable();
+            $table->dateTime('birthday')->nullable();
             $table->foreignId('sucursal')->constrained('sucursals');
             $table->foreignId('segmento')->constrained('segmentos');
             $table->foreignId('giro')->constrained('giros');

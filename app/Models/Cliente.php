@@ -65,7 +65,7 @@ class Cliente extends Model
 
     public function giro() {
 
-        return $this->belongsTo('app\Models\Giro');
+        return $this->belongsTo(Giro::class);
 
     } 
 }
