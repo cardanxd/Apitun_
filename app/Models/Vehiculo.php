@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vehiculo extends Model
 {
     protected $fillable = [
-        'cliente',
+        'cliente_id',
         'tipo',
         'marca',
         'modelo',

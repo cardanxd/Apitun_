@@ -10,8 +10,8 @@ class Orden extends Model
     protected $fillable = [
         'fecha',
         'vendedor',
-        'cliente',
-        'vehiculo',
+        'cliente_id',
+        'vehiculo_id',
         'cilindros',
         'condicionventa',
         'urgenciainicial',

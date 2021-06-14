@@ -32,9 +32,9 @@ class Cliente extends Model
         'diasbloqueo',
         'descuento',
         'birthday',
-        'sucursal',
-        'segmento',
-        'giro'
+        'sucursal_id',
+        'segmento_id',
+        'giro_id'
     ];
 
     protected $hidden = ['created_at','updated_at'];
