@@ -50,8 +50,7 @@ class GuardarOrdenRequest extends FormRequest
             "km"=>"required",
             "combustible"=>"required",
             "transmision"=>"required",
-            "vestiduras"=>"required",
-            "created_at"=>"required"
+            "vestiduras"=>"required"
         ];
     }
 }

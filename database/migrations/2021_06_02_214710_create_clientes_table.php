@@ -37,9 +37,9 @@ class CreateClientesTable extends Migration
             $table->integer('diasbloqueo')->nullable();
             $table->string('descuento')->nullable();
             $table->dateTime('birthday')->nullable();
-            $table->foreignId('sucursal')->constrained('sucursals');
-            $table->foreignId('segmento')->constrained('segmentos');
-            $table->foreignId('giro')->constrained('giros');
+            $table->foreignId('sucursal_id')->constrained('sucursals');
+            $table->foreignId('segmento_id')->constrained('segmentos');
+            $table->foreignId('giro_id')->constrained('giros');
             $table->timestamps();
         });
     }

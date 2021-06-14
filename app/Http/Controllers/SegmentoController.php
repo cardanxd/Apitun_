@@ -20,6 +20,12 @@ class SegmentoController extends Controller
         return SegmentoResource::collection(Segmento::all());
     }
 
+    public function clientes(String $id)
+    {
+        $segmento = Segmento::findOrFail($id);
+        return new SegmentoResource($segmento->clientes);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

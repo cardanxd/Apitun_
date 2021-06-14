@@ -15,12 +15,13 @@ class CreateOrdensTable extends Migration
     {
         Schema::create('ordens', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('fecha');
             $table->string('vendedor');
-            $table->foreignId('cliente')->constrained('clientes');
-            $table->foreignId('vehiculo')->constrained('vehiculos');
+            $table->foreignId('cliente_id')->constrained('clientes');
+            $table->foreignId('vehiculo_id')->constrained('vehiculos');
             $table->string('cilindros');
             $table->string('condicionventa');
-            $table->enum('urgenciainicial', ['baja', 'media','alta']);
+            $table->enum('urgenciainicial', ['Baja', 'Media','Alta']);
             $table->string('atencion')->nullable();
             $table->string('comentarios')->nullable();
             $table->string('centrocosto');

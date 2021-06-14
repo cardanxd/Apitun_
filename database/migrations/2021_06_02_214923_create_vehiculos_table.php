@@ -15,7 +15,7 @@ class CreateVehiculosTable extends Migration
     {
         Schema::create('vehiculos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cliente')->constrained('clientes');
+            $table->foreignId('cliente_id')->constrained('clientes');
             $table->string('tipo');
             $table->string('marca');
             $table->string('modelo');

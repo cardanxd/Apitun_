@@ -20,6 +20,18 @@ class ClienteController extends Controller
         return ClienteResource::collection(Cliente::all());
     }
 
+    public function vehiculos(String $id)
+    {
+        $cliente = Cliente::findOrFail($id);
+        return new ClienteResource($cliente->vehiculos);
+    }
+
+    public function ordenes(String $id)
+    {
+        $cliente = Cliente::findOrFail($id);
+        return new ClienteResource($cliente->ordenes);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -20,6 +20,12 @@ class GiroController extends Controller
         return GiroResource::collection(Giro::all());
     }
 
+    public function clientes(String $id)
+    {
+        $giro = Giro::findOrFail($id);
+        return new GiroResource($giro->clientes);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

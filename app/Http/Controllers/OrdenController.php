@@ -20,6 +20,16 @@ class OrdenController extends Controller
         return OrdenResource::collection(Orden::all());
     }
 
+    public function cliente(String $id){
+        $orden = Orden::findOrFail($id);
+        return new OrdenResource($orden->cliente);
+    }
+
+    public function vehiculo(String $id){
+        $orden = Orden::findOrFail($id);
+        return new OrdenResource($orden->vehiculo);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

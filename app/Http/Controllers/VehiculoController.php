@@ -20,6 +20,12 @@ class VehiculoController extends Controller
         return VehiculoResource::collection(Vehiculo::all());
     }
 
+    public function cliente(String $id)
+    {
+        $vehiculo = Vehiculo::findOrFail($id);
+        return new VehiculoResource($vehiculo->cliente);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

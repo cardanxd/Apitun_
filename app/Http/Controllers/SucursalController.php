@@ -20,6 +20,12 @@ class SucursalController extends Controller
         return SucursalResource::collection(Sucursal::all());
     }
 
+    public function clientes(String $id)
+    {
+        $sucursal = Sucursal::findOrFail($id);
+        return new SucursalResource($sucursal->clientes);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
