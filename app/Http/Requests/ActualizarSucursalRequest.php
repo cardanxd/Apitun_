@@ -24,7 +24,10 @@ class ActualizarSucursalRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre"=>"required"
+            "descripcion"=>"required",
+            "empresa"=>"required",
+            "estado"=>"required",
+            "zona"=>"required"
         ];
     }
 }

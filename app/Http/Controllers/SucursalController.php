@@ -6,7 +6,6 @@ use App\Http\Requests\ActualizarSucursalRequest;
 use App\Http\Requests\GuardarSucursalRequest;
 use App\Http\Resources\SucursalResource;
 use App\Models\Sucursal;
-use Illuminate\Http\Request;
 
 class SucursalController extends Controller
 {

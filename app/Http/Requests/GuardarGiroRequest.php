@@ -24,7 +24,8 @@ class GuardarGiroRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre"=>"required"
+            "descripcion"=>"required|unique:giros,descripcion",
+            "estado"=>"required"
         ];
     }
 }

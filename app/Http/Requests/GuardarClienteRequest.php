@@ -25,7 +25,6 @@ class GuardarClienteRequest extends FormRequest
     {
         return [
             "nombre"=>"required",
-            "razon"=>"unique:clientes,razon",
             "rfc"=>"unique:clientes,rfc",
             "email"=>"required|unique:clientes,email",
             "calle"=>"required",

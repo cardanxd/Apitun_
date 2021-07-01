@@ -25,7 +25,6 @@ class ActualizarClienteRequest extends FormRequest
     {
         return [
             "nombre"=>"required",
-            "razon"=>"unique:clientes,razon,".$this->route('cliente')->id,
             "rfc"=>"unique:clientes,rfc,".$this->route('cliente')->id,
             "email"=>"required|unique:clientes,email,".$this->route('cliente')->id,
             "calle"=>"required",

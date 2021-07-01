@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Sucursal extends Model
 {
     protected $fillable = [
-        'nombre'
+        'descripcion',
+        'empresa',
+        'centro_costo',
+        'cuenta_contable',
+        'estado',
+        'zona'
     ];
 
     protected $hidden = ['created_at','updated_at'];

@@ -24,7 +24,10 @@ class GuardarSucursalRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre"=>"required"
+            "descripcion"=>"required|unique:sucursals,descripcion",
+            "empresa"=>"required",
+            "estado"=>"required",
+            "zona"=>"required"
         ];
     }
 }

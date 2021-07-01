@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Segmento extends Model
 {
     protected $fillable = [
-        'nombre'
+        'descripcion',
+        'estado'
     ];
 
     protected $hidden = ['created_at','updated_at'];

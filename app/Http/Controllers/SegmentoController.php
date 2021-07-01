@@ -6,7 +6,6 @@ use App\Http\Requests\ActualizarSegmentoRequest;
 use App\Http\Requests\GuardarSegmentoRequest;
 use App\Http\Resources\SegmentoResource;
 use App\Models\Segmento;
-use Illuminate\Http\Request;
 
 class SegmentoController extends Controller
 {

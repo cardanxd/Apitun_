@@ -24,7 +24,8 @@ class GuardarSegmentoRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre"=>"required"
+            "descripcion"=>"required|unique:segmentos,descripcion",
+            "estado"=>"required"
         ];
     }
 }

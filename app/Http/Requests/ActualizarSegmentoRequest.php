@@ -24,7 +24,8 @@ class ActualizarSegmentoRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre"=>"required"
+            "descripcion"=>"required",
+            "estado"=>"required"
         ];
     }
 }
