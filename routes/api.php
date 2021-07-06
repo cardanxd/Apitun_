@@ -1,12 +1,14 @@
 <?php
 
+use App\Http\Controllers\CentroCostoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CondicionVentaController;
+use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\GiroController;
 use App\Http\Controllers\OrdenController;
 use App\Http\Controllers\SegmentoController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\VehiculoController;
-use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +36,27 @@ Route::get('giros/{giro}', [GiroController::class,'show']);
 Route::get('giros/clientes/{id}', [GiroController::class,'clientes']);
 Route::put('giros/{giro}', [GiroController::class,'update']);
 Route::delete('giros/{giro}', [GiroController::class,'destroy']);
+
+Route::get('equipos', [EquipoController::class,'index']);
+Route::post('equipos', [EquipoController::class,'store']);
+Route::get('equipos/{equipo}', [EquipoController::class,'show']);
+Route::get('equipos/vehiculos/{id}', [EquipoController::class,'vehiculos']);
+Route::put('equipos/{equipo}', [EquipoController::class,'update']);
+Route::delete('equipos/{equipo}', [EquipoController::class,'destroy']);
+
+Route::get('condiciones', [CondicionVentaController::class,'index']);
+Route::post('condiciones', [CondicionVentaController::class,'store']);
+Route::get('condiciones/{condicion}', [CondicionVentaController::class,'show']);
+Route::get('condiciones/ordenes/{id}', [CondicionVentaController::class,'ordenes']);
+Route::put('condiciones/{condicion}', [CondicionVentaController::class,'update']);
+Route::delete('condiciones/{condicion}', [CondicionVentaController::class,'destroy']);
+
+Route::get('centrocostos', [CentroCostoController::class,'index']);
+Route::post('centrocostos', [CentroCostoController::class,'store']);
+Route::get('centrocostos/{centrocosto}', [CentroCostoController::class,'show']);
+Route::get('centrocostos/ordenes/{id}', [CentroCostoController::class,'ordenes']);
+Route::put('centrocostos/{centrocosto}', [CentroCostoController::class,'update']);
+Route::delete('centrocostos/{centrocosto}', [CentroCostoController::class,'destroy']);
 
 Route::get('clientes', [ClienteController::class,'index']);
 Route::post('clientes', [ClienteController::class,'store']);

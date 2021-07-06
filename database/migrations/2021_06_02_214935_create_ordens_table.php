@@ -20,11 +20,11 @@ class CreateOrdensTable extends Migration
             $table->foreignId('cliente_id')->constrained('clientes');
             $table->foreignId('vehiculo_id')->constrained('vehiculos');
             $table->string('cilindros');
-            $table->string('condicionventa');
+            $table->foreignId('condicionventa_id')->constrained('condicion_ventas');
             $table->enum('urgenciainicial', ['Baja', 'Media','Alta']);
             $table->string('atencion')->nullable();
             $table->string('comentarios')->nullable();
-            $table->string('centrocosto');
+            $table->foreignId('centrocosto_id')->constrained('centro_costos');
             $table->enum('placa', ['true', 'false']);
             $table->enum('ceniceros', ['true', 'false']);
             $table->enum('cristales_rotos', ['true', 'false']);

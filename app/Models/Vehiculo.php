@@ -25,6 +25,12 @@ class Vehiculo extends Model
 
     }
 
+    public function equipo(){
+
+        return $this->belongsTo(Equipo::class);
+    
+    }
+
     public function ordenes(){
 
         return $this->hasMany(Cliente::class);

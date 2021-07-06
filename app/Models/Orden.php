@@ -41,7 +41,7 @@ class Orden extends Model
         'vestiduras'
     ];
 
-    protected $hidden = ['updated_at'];
+    protected $hidden = ['created_at','updated_at'];
 
     public function cliente() {
 
