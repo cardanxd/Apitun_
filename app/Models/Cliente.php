@@ -27,14 +27,7 @@ class Cliente extends Model
         'particular',
         'oficina',
         'movil',
-        'limitecredito',
-        'diascredito',
-        'diasbloqueo',
-        'descuento',
-        'birthday',
-        'sucursal_id',
-        'segmento_id',
-        'giro_id'
+        'birthday'
     ];
 
     protected $hidden = ['created_at','updated_at'];
@@ -50,22 +43,4 @@ class Cliente extends Model
         return $this->hasMany(Orden::class);
 
     }
-
-    public function sucursal() {
-
-        return $this->belongsTo(Sucursal::class);
-
-    }
-
-    public function segmento() {
-
-        return $this->belongsTo(Segmento::class);
-
-    }
-
-    public function giro() {
-
-        return $this->belongsTo(Giro::class);
-
-    } 
 }

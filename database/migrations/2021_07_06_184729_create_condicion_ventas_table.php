@@ -15,7 +15,7 @@ class CreateCondicionVentasTable extends Migration
     {
         Schema::create('condicion_ventas', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
+            $table->string('descripcion')->unique();
             $table->string('tipo');
             $table->string('estado');
             $table->timestamps();

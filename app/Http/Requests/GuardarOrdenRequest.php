@@ -25,11 +25,13 @@ class GuardarOrdenRequest extends FormRequest
     {
         return [
             "fecha"=>"required",
-            "vendedor"=>"required",
+            "tecnico"=>"required",
+            "cliente_id"=>"required",
+            "vehiculo_id"=>"required",
             "cilindros"=>"required",
-            "condicionventa"=>"required",
             "urgenciainicial"=>"required",
-            "centrocosto"=>"required",
+            "trabajo"=>"required",
+            "centrocosto_id"=>"required",
             "placa"=>"required",
             "ceniceros"=>"required",
             "cristales_rotos"=>"required",

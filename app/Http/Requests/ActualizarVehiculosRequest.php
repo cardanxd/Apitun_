@@ -24,7 +24,7 @@ class ActualizarVehiculosRequest extends FormRequest
     public function rules()
     {
         return [
-            "tipo"=>"required",
+            "equipo"=>"required",
             "marca"=>"required",
             "modelo"=>"required",
             "serie"=>"required|unique:vehiculos,serie,".$this->route('vehiculo')->id,

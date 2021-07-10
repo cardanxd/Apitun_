@@ -24,12 +24,13 @@ class GuardarVehiculoRequest extends FormRequest
     public function rules()
     {
         return [
-            "tipo"=>"required",
+            "cliente_id"=>"required",
+            "equipo"=>"required",
             "marca"=>"required",
             "modelo"=>"required",
             "serie"=>"required|unique:vehiculos,serie",
-            "economico"=>"unique:vehiculos,economico",
-            "placa"=>"unique:vehiculos,placa"
+            "economico"=>"required|unique:vehiculos,economico",
+            "placa"=>"required|unique:vehiculos,placa"
         ];
     }
 }

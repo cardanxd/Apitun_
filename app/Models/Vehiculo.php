@@ -9,7 +9,7 @@ class Vehiculo extends Model
 {
     protected $fillable = [
         'cliente_id',
-        'tipo',
+        'equipo',
         'marca',
         'modelo',
         'serie',
@@ -23,12 +23,6 @@ class Vehiculo extends Model
 
         return $this->belongsTo(Cliente::class);
 
-    }
-
-    public function equipo(){
-
-        return $this->belongsTo(Equipo::class);
-    
     }
 
     public function ordenes(){

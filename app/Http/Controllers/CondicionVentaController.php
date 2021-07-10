@@ -19,10 +19,10 @@ class CondicionVentaController extends Controller
         return CondicionVentaResource::collection(CondicionVenta::all());
     }
 
-    public function ordenes(String $id){
+    /*public function ordenes(String $id){
         $condicionVenta = CondicionVenta::findOrFail($id);
         return new CondicionVentaResource($condicionVenta->ordenes);
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
@@ -41,9 +41,9 @@ class CondicionVentaController extends Controller
      * @param  \App\Models\CondicionVenta  $condicionVenta
      * @return \Illuminate\Http\Response
      */
-    public function show(CondicionVenta $condicionVenta)
+    public function show(CondicionVenta $condicion)
     {
-        return new CondicionVentaResource($condicionVenta);
+        return new CondicionVentaResource($condicion);
     }
 
     /**
@@ -53,10 +53,10 @@ class CondicionVentaController extends Controller
      * @param  \App\Models\CondicionVenta  $condicionVenta
      * @return \Illuminate\Http\Response
      */
-    public function update(ActualizarCondicionVentaRequest $request, CondicionVenta $condicionVenta)
+    public function update(ActualizarCondicionVentaRequest $request, CondicionVenta $condicion)
     {
-        $condicionVenta->update($request->all());
-        return new CondicionVentaResource($condicionVenta);
+        $condicion->update($request->all());
+        return new CondicionVentaResource($condicion);
     }
 
     /**
@@ -65,9 +65,9 @@ class CondicionVentaController extends Controller
      * @param  \App\Models\CondicionVenta  $condicionVenta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CondicionVenta $condicionVenta)
+    public function destroy(CondicionVenta $condicion)
     {
-        $condicionVenta->delete();
-        return new CondicionVentaResource($condicionVenta);
+        $condicion->delete();
+        return new CondicionVentaResource($condicion);
     }
 }

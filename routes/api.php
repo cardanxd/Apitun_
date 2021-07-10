@@ -16,34 +16,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('sucursales', [SucursalController::class,'index']);
-Route::post('sucursales', [SucursalController::class,'store']);
-Route::get('sucursales/{sucursal}', [SucursalController::class,'show']);
-Route::get('sucursales/clientes/{id}', [SucursalController::class,'clientes']);
-Route::put('sucursales/{sucursal}', [SucursalController::class,'update']);
-Route::delete('sucursales/{sucursal}', [SucursalController::class,'destroy']);
-
-Route::get('segmentos', [SegmentoController::class,'index']);
-Route::post('segmentos', [SegmentoController::class,'store']);
-Route::get('segmentos/{segmento}', [SegmentoController::class,'show']);
-Route::get('segmentos/clientes/{id}', [SegmentoController::class,'clientes']);
-Route::put('segmentos/{segmento}', [SegmentoController::class,'update']);
-Route::delete('segmentos/{segmento}', [SegmentoController::class,'destroy']);
-
-Route::get('giros', [GiroController::class,'index']);
-Route::post('giros', [GiroController::class,'store']);
-Route::get('giros/{giro}', [GiroController::class,'show']);
-Route::get('giros/clientes/{id}', [GiroController::class,'clientes']);
-Route::put('giros/{giro}', [GiroController::class,'update']);
-Route::delete('giros/{giro}', [GiroController::class,'destroy']);
-
-Route::get('equipos', [EquipoController::class,'index']);
-Route::post('equipos', [EquipoController::class,'store']);
-Route::get('equipos/{equipo}', [EquipoController::class,'show']);
-Route::get('equipos/vehiculos/{id}', [EquipoController::class,'vehiculos']);
-Route::put('equipos/{equipo}', [EquipoController::class,'update']);
-Route::delete('equipos/{equipo}', [EquipoController::class,'destroy']);
-
 Route::get('condiciones', [CondicionVentaController::class,'index']);
 Route::post('condiciones', [CondicionVentaController::class,'store']);
 Route::get('condiciones/{condicion}', [CondicionVentaController::class,'show']);

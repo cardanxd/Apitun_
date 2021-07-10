@@ -24,7 +24,7 @@ class ActualizarCondicionVentaRequest extends FormRequest
     public function rules()
     {
         return [
-            "descripcion"=>"required",
+            "descripcion"=>"required|unique:condicion_ventas,descripcion,".$this->route('condicion')->id,
             "tipo"=>"required",
             "estado"=>"required"
         ];

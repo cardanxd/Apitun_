@@ -29,17 +29,10 @@ class CreateClientesTable extends Migration
             $table->string('ciudad');
             $table->string('estado');
             $table->string('pais');
-            $table->string('particular')->unique()->nullable();
+            $table->string('particular')->unique();
             $table->string('oficina')->nullable();
-            $table->string('movil')->unique();
-            $table->double('limitecredito')->nullable();
-            $table->integer('diascredito')->nullable();
-            $table->integer('diasbloqueo')->nullable();
-            $table->string('descuento')->nullable();
+            $table->string('movil')->unique()->nullable();
             $table->dateTime('birthday')->nullable();
-            $table->foreignId('sucursal_id')->constrained('sucursals');
-            $table->foreignId('segmento_id')->constrained('segmentos');
-            $table->foreignId('giro_id')->constrained('giros');
             $table->timestamps();
         });
     }

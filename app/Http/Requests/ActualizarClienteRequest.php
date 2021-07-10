@@ -34,8 +34,8 @@ class ActualizarClienteRequest extends FormRequest
             "ciudad"=>"required",
             "estado"=>"required",
             "pais"=>"required",
-            "particular"=>"unique:clientes,particular,".$this->route('cliente')->id,
-            "movil"=>"required|unique:clientes,movil,".$this->route('cliente')->id,
+            "particular"=>"required|unique:clientes,particular,".$this->route('cliente')->id,
+            "movil"=>"unique:clientes,movil".$this->route('cliente')->id
         ];
     }
 }

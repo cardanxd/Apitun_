@@ -41,9 +41,9 @@ class CentroCostoController extends Controller
      * @param  \App\Models\CentroCosto  $centroCosto
      * @return \Illuminate\Http\Response
      */
-    public function show(CentroCosto $centroCosto)
+    public function show(CentroCosto $centrocosto)
     {
-        return new CentroCostoResource($centroCosto);
+        return new CentroCostoResource($centrocosto);
     }
 
     /**
@@ -53,10 +53,10 @@ class CentroCostoController extends Controller
      * @param  \App\Models\CentroCosto  $centroCosto
      * @return \Illuminate\Http\Response
      */
-    public function update(ActualizarCentroCostoRequest $request, CentroCosto $centroCosto)
+    public function update(ActualizarCentroCostoRequest $request, CentroCosto $centrocosto)
     {
-        $centroCosto->update($request->all());
-        return new CentroCostoResource($centroCosto);
+        $centrocosto->update($request->all());
+        return new CentroCostoResource($centrocosto);
     }
 
     /**
@@ -65,9 +65,9 @@ class CentroCostoController extends Controller
      * @param  \App\Models\CentroCosto  $centroCosto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CentroCosto $centroCosto)
+    public function destroy(CentroCosto $centrocosto)
     {
-        $centroCosto->delete();
-        return new CentroCostoResource($centroCosto);
+        $centrocosto->delete();
+        return new CentroCostoResource($centrocosto);
     }
 }

@@ -24,7 +24,7 @@ class ActualizarCentroCostoRequest extends FormRequest
     public function rules()
     {
         return [
-            "descripcion"=>"required",
+            "descripcion"=>"required|unique:centro_costos,descripcion,".$this->route('centrocosto')->id,
             "estado"=>"required"
         ];
     }

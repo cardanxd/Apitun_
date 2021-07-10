@@ -34,8 +34,8 @@ class GuardarClienteRequest extends FormRequest
             "ciudad"=>"required",
             "estado"=>"required",
             "pais"=>"required",
-            "particular"=>"unique:clientes,particular",
-            "movil"=>"required|unique:clientes,movil"
+            "particular"=>"required|unique:clientes,particular",
+            "movil"=>"unique:clientes,movil"
         ];
     }
 }
