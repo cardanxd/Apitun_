@@ -27,13 +27,6 @@ class GuardarClienteRequest extends FormRequest
             "nombre"=>"required",
             "rfc"=>"unique:clientes,rfc",
             "email"=>"required|unique:clientes,email",
-            "calle"=>"required",
-            "exterior"=>"required",
-            "ecalle"=>"required",
-            "colonia"=>"required",
-            "ciudad"=>"required",
-            "estado"=>"required",
-            "pais"=>"required",
             "particular"=>"required|unique:clientes,particular",
             "movil"=>"unique:clientes,movil"
         ];

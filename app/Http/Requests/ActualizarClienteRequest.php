@@ -27,13 +27,6 @@ class ActualizarClienteRequest extends FormRequest
             "nombre"=>"required",
             "rfc"=>"unique:clientes,rfc,".$this->route('cliente')->id,
             "email"=>"required|unique:clientes,email,".$this->route('cliente')->id,
-            "calle"=>"required",
-            "exterior"=>"required",
-            "ecalle"=>"required",
-            "colonia"=>"required",
-            "ciudad"=>"required",
-            "estado"=>"required",
-            "pais"=>"required",
             "particular"=>"required|unique:clientes,particular,".$this->route('cliente')->id,
             "movil"=>"unique:clientes,movil".$this->route('cliente')->id
         ];
